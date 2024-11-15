@@ -19,7 +19,7 @@ function nextSlide() {
 }
 
 function prevSlide() {
-  seekSlide(1);
+  seekSlide(-1);
 }
 
 function updateProgressBar() {
