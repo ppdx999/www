@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>Slideshow</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="scripts.js" defer></script>
     <!-- Highlight.js -->
     <link
       rel="stylesheet"
@@ -12,10 +10,25 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js" defer></script>
   </head>
   <body>
     <div class="slideshow">
 			<div class="slide" data-slide="0">
+				<h2>Code Slide</h2>
+				<pre><code class="language-python">def hello_world():
+		print("Hello, World!")
+
+# Call the function
+hello_world()</code></pre>
+				<pre><code class="language-python">def hello_world():
+		print("Hello, World!")
+
+# Call the function
+hello_world()</code></pre>
+			</div>
+			<div class="slide" data-slide="1">
 				<h2>Code Slide</h2>
 				<div class="code-container">
 					<table class="code-table">
@@ -27,41 +40,9 @@
 					</table>
 				</div>
 			</div>
-			<div class="slide" data-slide="1">
-				<h2>Code Slide</h2>
-				<div class="code-container">
-						<table class="code-table">
-								<tbody>
-										<tr>
-												<td class="line-number">1</td>
-												<td class="code-content"><code>const hello = "Hello, World!";</code></td>
-										</tr>
-										<tr>
-												<td class="line-number">2</td>
-												<td class="code-content"><code>function greet() {</code></td>
-										</tr>
-										<tr>
-												<td class="line-number">3</td>
-												<td class="code-content"><code>    console.log(hello);</code></td>
-										</tr>
-										<tr>
-												<td class="line-number">4</td>
-												<td class="code-content"><code>}</code></td>
-										</tr>
-										<tr>
-												<td class="line-number">5</td>
-												<td class="code-content"><code>greet();</code></td>
-										</tr>
-								</tbody>
-						</table>
-				</div>
-			</div>
       <div class="slide" data-slide="2">
         <h2>Another Slide</h2>
         <p>More content here.</p>
-      </div>
-      <div class="slide" data-slide="3">
-				<!--- CODE_PYTHON_hello.py -->
       </div>
     </div>
     <!-- Add more slides as needed -->
@@ -71,7 +52,26 @@
       <div class="progress-bar"></div>
     </div>
     <script>
-      hljs.highlightAll();
+			function addLineNumber() {
+				const codeBlocks = document.querySelectorAll("pre code");
+				codeBlocks.forEach((codeBlock) => {
+					const lines = codeBlock.innerHTML.split("\n");
+					const lineNumbers = lines
+						.map((line, index) => `<span class="line-number">${index + 1}</span>`)
+						.join("");
+					codeBlock.innerHTML = `<span class="line-numbers">${lineNumbers}</span>${codeBlock.innerHTML}`;
+				});
+			}
+
+			document.addEventListener("DOMContentLoaded", (event) => {
+				document.querySelectorAll("pre code").forEach(el => {
+					hljs.highlightElement(el);
+					el.innerHTML = el.innerHTML
+						.split("\n")
+						.map(line => `<span class="code-line">${line}</span>`)
+						.join("");
+				});
+			});
     </script>
   </body>
 </html>

@@ -95,3 +95,26 @@
     color: #24292e;
 }
 
+.hljs {
+	background: #f6f8fa;
+}
+
+/* 行番号のスタイリング */
+pre code {
+		font-family: 'Ricty Diminished', monospace;
+    counter-reset: line-number;
+}
+
+pre code .code-line {
+    display: block;
+    counter-increment: line-number;
+}
+
+pre code .code-line::before {
+    content: counter(line-number);
+    display: inline-block;
+    width: 2em;
+    margin-right: 2em;
+    color: #888;
+    text-align: right;
+}
