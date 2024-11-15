@@ -34,9 +34,13 @@ document.querySelector(".prev-slide").addEventListener("click", prevSlide);
 document.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowLeft":
+		case "ArrowUp":
+		case "Backspace":
       prevSlide();
       break;
     case "ArrowRight":
+		case "ArrowDown":
+		case "Enter":
       nextSlide();
       break;
   }
