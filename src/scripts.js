@@ -1,12 +1,27 @@
 const slides = document.querySelectorAll(".slide");
 const progressBar = document.querySelector(".progress-bar");
-let currentIndex = 0;
+
+function getSlideFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return parseInt(params.get('slide'), 10) || 0; // デフォルトは0番目のスライド
+}
+
+function updateSlideInURL(slideIndex) {
+    const params = new URLSearchParams(window.location.search);
+    params.set('slide', slideIndex);
+    // URLを更新 (ページのリロードなし)
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+}
+
+let currentIndex = getSlideFromURL();
 
 function showSlide(index) {
   slides.forEach((slide, i) => {
     slide.classList.toggle("active", i === index);
   });
   updateProgressBar();
+
+	updateSlideInURL(index);
 }
 
 function seekSlide(index) {
