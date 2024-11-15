@@ -1,10 +1,12 @@
 const slides = document.querySelectorAll('.slide');
+const progressBar = document.querySelector('.progress-bar');
 let currentIndex = 0;
 
 function showSlide(index) {
     slides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
     });
+		updateProgressBar();
 }
 
 function seekSlide(index) {
@@ -18,6 +20,11 @@ function nextSlide() {
 
 function prevSlide() {
 	seekSlide(1);
+}
+
+function updateProgressBar() {
+    const progressWidth = ((currentIndex + 1) / slides.length) * 100;
+    progressBar.style.width = `${progressWidth}%`;
 }
 
 document.querySelector('.next-slide')

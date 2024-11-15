@@ -31,3 +31,22 @@
 
 .prev-slide { left: 10px; }
 .next-slide { right: 10px; }
+
+.progress-bar-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background-color: #ddd; /* 背景色 */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #007bff; /* プログレスバーの色 */
+    transition: width 0.3s ease;
+}
