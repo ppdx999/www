@@ -55,3 +55,43 @@
   background-color: #007bff; /* プログレスバーの色 */
   transition: width 0.3s ease;
 }
+
+
+.code-container {
+    background-color: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 14px;
+    overflow: auto;
+    padding: 10px;
+}
+
+.code-table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.code-table tr {
+    vertical-align: top;
+}
+
+.line-number {
+    width: 3em;
+    text-align: right;
+    padding-right: 1em;
+    color: #586069;
+    background-color: #f6f8fa;
+    border-right: 1px solid #e1e4e8;
+}
+
+.code-content {
+    white-space: pre;
+    padding-left: 1em;
+}
+
+.code-content code {
+    color: #24292e;
+}
+
